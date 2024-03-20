@@ -27,6 +27,8 @@ public class AxiosController {
 	@Autowired
 	UploadFileService uploadFileService;
 	
+	/////////////////// OBJECT  ///////////////////
+	
 	@GetMapping("/get_data")
 //	public Object getData(@RequestParam("id") String id) {
 	public Object getData(@RequestParam Map<String, String> paramsMap, HttpSession session) {
@@ -119,4 +121,90 @@ public class AxiosController {
 		return responseMap;
 		
 	}
+	
+	
+	/////////////////// FORMDATA  ///////////////////
+	// GET은 FORMDATA 안됨
+	
+	@PostMapping("/post_formdata")
+	public Object postFormdata(@RequestParam("id") String id, 
+							   @RequestParam("pw") String pw, 
+							   HttpSession session) {
+		log.info("postFormdata()");
+		log.info("id: {}", id);
+		log.info("pw: {}", pw);
+		log.info("session ID: {}", session.getId());
+		
+		Map<String, Object> responseMap = new HashMap<>();
+		
+		responseMap.put("data1", "Good");
+		responseMap.put("data2", " ");
+		responseMap.put("data3", "morning.");
+		
+		return responseMap;
+		
+	}
+	
+	@PutMapping("/put_formdata")
+	public Object putFormdata(@RequestParam("id") String id, 
+							  @RequestParam("pw") String pw, 
+							  HttpSession session) {
+		log.info("putFormdata()");
+		log.info("id: {}", id);
+		log.info("pw: {}", pw);
+		log.info("session ID: {}", session.getId());
+		
+		Map<String, Object> responseMap = new HashMap<>();
+		
+		responseMap.put("data1", "Good");
+		responseMap.put("data2", " ");
+		responseMap.put("data3", "morning.");
+		
+		return responseMap;
+		
+	}
+	
+	@DeleteMapping("/delete_formdata")
+	public Object deleteFormdata(@RequestParam("id") String id, 
+							  	 @RequestParam("pw") String pw, 
+							     HttpSession session) {
+		log.info("deleteFormdata()");
+		log.info("id: {}", id);
+		log.info("pw: {}", pw);
+		log.info("session ID: {}", session.getId());
+		
+		Map<String, Object> responseMap = new HashMap<>();
+		
+		responseMap.put("data1", "Good");
+		responseMap.put("data2", " ");
+		responseMap.put("data3", "morning.");
+		
+		return responseMap;
+		
+	}
+	
+	
+	/////////////////// DTO MAPPING  ///////////////////
+	
+	@DeleteMapping("/delete_formdata_dto")
+	public Object deleteFormdataDto(AxiosDto axiosDto, 
+								 @RequestParam("email") String email,
+							     HttpSession session) {
+		log.info("deleteFormdataDto()");
+		log.info("id: {}", axiosDto.getId());
+		log.info("pw: {}", axiosDto.getPw());
+		log.info("mail: {}", axiosDto.getMail());
+		log.info("email: {}", email);
+		log.info("session ID: {}", session.getId());
+		
+		Map<String, Object> responseMap = new HashMap<>();
+		
+		responseMap.put("data1", "Good");
+		responseMap.put("data2", " ");
+		responseMap.put("data3", "morning.");
+		
+		return responseMap;
+		
+	}
+	
 }
